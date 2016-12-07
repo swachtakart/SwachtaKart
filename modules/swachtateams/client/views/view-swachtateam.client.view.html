@@ -1,0 +1,26 @@
+<section>
+  <div class="page-header">
+    <h1 ng-bind="vm.swachtateam.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.swachtateam.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="swachtateams.edit({ swachtateamId: vm.swachtateam._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.swachtateam.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.swachtateam.user"
+            ng-bind="vm.swachtateam.user.displayName"></span>
+      <span ng-if="!vm.swachtateam.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.swachtateam.content"></p>
+</section>

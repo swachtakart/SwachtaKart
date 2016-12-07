@@ -1,0 +1,38 @@
+<!-- <section> -->
+<!-- <TITLE>Welcome to Swachta Map</TITLE> -->
+<!-- <div map-lazy-load="https://maps.google.com/maps/api/js" -->
+<!--   map-lazy-load-params="{{googleMapsUrl}}"> -->
+<!--   <ng-map center="41,-87" zoom="3"></ng-map> -->
+<!-- </div> -->
+
+
+
+
+
+
+
+  <div class="page-header">
+    <h1 ng-bind="vm.swachtakartmap.name"></h1>
+  </div>
+  <div class="pull-right"
+       ng-show="vm.swachtakartmap.isCurrentUserOwner">
+    <a class="btn btn-primary"
+       ui-sref="swachtakartmaps.edit({ swachtakartmapId: vm.swachtakartmap._id })">
+      <i class="glyphicon glyphicon-edit"></i>
+    </a>
+    <a class="btn btn-primary" ng-click="vm.remove()">
+      <i class="glyphicon glyphicon-trash"></i>
+    </a>
+  </div>
+  <small>
+    <em class="text-muted">
+      Posted on
+      <span ng-bind="vm.swachtakartmap.created | date:'mediumDate'"></span>
+      by
+      <span ng-if="vm.swachtakartmap.user"
+            ng-bind="vm.swachtakartmap.user.displayName"></span>
+      <span ng-if="!vm.swachtakartmap.user">Deleted User</span>
+    </em>
+  </small>
+  <p class="lead" ng-bind="vm.swachtakartmap.content"></p>
+</section>

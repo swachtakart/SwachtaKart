@@ -1,0 +1,132 @@
+<section>
+	<div class="page-header">
+		<h1>{{vm.swachtateam._id ? 'Edit Swachta Team' : 'Create Swachta Team'}}</h1>
+	</div>
+	<div class="row">
+		<div class="col-md-6">
+			<form name="vm.form.swachtateamForm" class="form-horizontal" ng-submit="vm.save(vm.form.swachtateamForm.$valid)" novalidate>
+				<fieldset>
+					<div class="form-group" show-errors>
+						<label class="control-label" for="name"> Team Name</label>
+						<input name="teamName" type="text" ng-model="vm.swachtateam.teamName" id="teamName" class="form-control" placeholder="Team Name"
+							required>
+						<label class="control-label" for="name">Team Owner</label>
+						<input name="teamOwner" type="text" ng-model="vm.swachtateam.teamOwner" id="teamOwner" class="form-control" placeholder="Team Owner"
+							required>
+						<label class="control-label" for="name">Team Size</label>
+						<div class="row">
+							<div class="col-md-8">
+								<select name="teamSize" type="dropdown" ng-model="vm.swachtateam.teamSize" id="teamSize" class="form-control" placeholder="Team Size"
+									required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                </select>
+							</div>
+							<div class="col-md-4">
+								<button type="button" class="btn btn-primary btn-small" data-toggle="modal" data-target="#addMemberModal" ng-click="showdetails = !showdetails">Add Members</button>
+							</div>
+						</div>
+						<div ng-messages="vm.form.swachtateamForm.name.$error" role="alert">
+							<p class="help-block error-text" ng-message="required">Swachtateam name is required.</p>
+						</div>
+					</div>
+					<div class="form-group">
+						<button type="submit" class="btn btn-default">{{vm.swachtateam._id ? 'Update' : 'Create'}}</button>
+					</div>
+					<div ng-show="vm.error" class="text-danger">
+						<strong ng-bind="vm.error"></strong>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<div class="col-md-6 ng-hide" ng-show="showdetails" id="addMembersDiv" ng-controller="AuthenticationController">
+			<form name="userForm" ng-submit="signup(userForm.$valid)" class="signin" novalidate autocomplete="off">
+				<fieldset>
+					<div class="form-group" show-errors>
+						<label for="firstName">First Name</label>
+						<input type="text" id="firstName" name="firstName" class="form-control" ng-model="credentials.firstName" placeholder="First Name"
+							required>
+						<div ng-messages="userForm.firstName.$error" role="alert">
+							<p class="help-block error-text" ng-message="required">First name is required.</p>
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+						<label for="lastName">Last Name</label>
+						<input type="text" id="lastName" name="lastName" class="form-control" ng-model="credentials.lastName" placeholder="Last Name"
+							required>
+						<div ng-messages="userForm.lastName.$error" role="alert">
+							<p class="help-block error-text" ng-message="required">Last name is required.</p>
+						</div>
+					</div>
+					<label class="control-label" for="name">Sex</label>
+					<div class="row">
+						<div class="col-md-8">
+							<select name="sex" type="dropdown" ng-model="vm.swachtateam.sex" id="sex" class="form-control" placeholder="Team Size" required>
+                <option value="F">Female</option>
+                <option value="M">Male</option>
+                <option value="O">Other</option>
+                </select>
+						</div>
+						<div class="col-md-4">
+							<label for="age">Age</label>
+							<select type='dropdown' id="age">  
+            <option></option>
+            <option></option>
+          </select>
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+
+						<input type="text" id="age" name="age" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
+						<div ng-messages="userForm.email.$error" role="alert">
+							<p class="help-block error-text" ng-message="required">Age is required.</p>
+							<p class="help-block error-text" ng-message="email">EAge is invalid.</p>
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+						<label for="username">Contact No</label>
+						<input type="text" id="username" name="username" class="form-control" ng-model="credentials.username" placeholder="Username"
+							lowercase required>
+						<div ng-messages="userForm.username.$error" role="alert">
+							<p class="help-block error-text" ng-message="required">Username is required.</p>
+						</div>
+					</div>
+					<div class="form-group" show-errors>
+						<label for="password"><ADDRESS></ADDRESS></label>
+						<input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password"
+							popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
+						<div ng-messages="userForm.password.$error" role="alert">
+							<p class="help-block error-text" ng-message="required">Password is required.</p>
+							<div ng-repeat="passwordError in passwordErrors">
+								<p class="help-block error-text" ng-show="userForm.password.$error.requirements">{{passwordError}}</p>
+							</div>
+						</div>
+					</div>
+					<div class="form-group" ng-show="!userForm.password.$error.required">
+						<label>Password Requirements</label>
+						<progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
+					</div>
+					<div class="text-center form-group">
+						<button type="submit" class="btn btn-primary">Add</button>
+
+					</div>
+					<div ng-show="error" class="text-center text-danger">
+						<strong ng-bind="error"></strong>
+					</div>
+				</fieldset>
+			</form>
+			<div ng-messages="vm.form.swachtateamForm.name.$error" role="alert">
+				<p class="help-block error-text" ng-message="required">Swachtateam name is required.</p>
+			</div>
+		</div>
+		<div ng-show="vm.error" class="text-danger">
+			<strong ng-bind="vm.error"></strong>
+		</div>
+		</fieldset>
+		</form>
+
+	</div>
+	</div>
+</section>
