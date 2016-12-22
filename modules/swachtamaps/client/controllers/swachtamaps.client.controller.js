@@ -6,9 +6,9 @@
     .module('swachtamaps')
     .controller('SwachtamapsController', SwachtamapsController);
 
-  SwachtamapsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'swachtamapResolve'];
+  SwachtamapsController.$inject = ['$scope', '$state', '$window', 'Authentication', 'swachtamapResolve','NgMap'];
 
-  function SwachtamapsController ($scope, $state, $window, Authentication, swachtamap) {
+  function SwachtamapsController ($scope, $state, $window, Authentication, swachtamap,NgMap) {
     var vm = this;
 
     vm.authentication = Authentication;
@@ -18,6 +18,23 @@
     vm.remove = remove;
     vm.save = save;
 
+    $scope.positions = [{
+    lat: 43.07493,
+    lng: -89.381388},
+    {
+    lat: 33.07493,
+    lng: -69.381388},
+    {
+    lat: 53.07493,
+    lng: -79.381388},
+    {
+    lat: 63.07493,
+    lng: -99.381388}
+  ];
+
+    NgMap.getMap().then(function(map) {
+  //Map Initialize Options
+    });
     // Remove existing Swachtamap
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {

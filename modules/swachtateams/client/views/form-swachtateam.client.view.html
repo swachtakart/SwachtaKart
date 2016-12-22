@@ -72,14 +72,14 @@
 						<div class="col-md-4">
 							<label for="age">Age</label>
 							<select type='dropdown' id="age">  
-            <option></option>
-            <option></option>
+            <option>1</option>
+            <option>2</option>
           </select>
 						</div>
 					</div>
 					<div class="form-group" show-errors>
-
-						<input type="text" id="age" name="age" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
+						<label for="email">Email</label>
+						<input type="text" id="email" name="email" class="form-control" ng-model="credentials.email" placeholder="Email" lowercase required>
 						<div ng-messages="userForm.email.$error" role="alert">
 							<p class="help-block error-text" ng-message="required">Age is required.</p>
 							<p class="help-block error-text" ng-message="email">EAge is invalid.</p>
@@ -94,19 +94,15 @@
 						</div>
 					</div>
 					<div class="form-group" show-errors>
-						<label for="password"><ADDRESS></ADDRESS></label>
-						<input type="password" id="password" name="password" class="form-control" ng-model="credentials.password" placeholder="Password"
+						<label for="address">Address</label>
+						<input type="address" id="address" name="address" class="form-control" ng-model="credentials.address" placeholder="Address"
 							popover="{{popoverMsg}}" popover-trigger="focus" password-validator required>
 						<div ng-messages="userForm.password.$error" role="alert">
-							<p class="help-block error-text" ng-message="required">Password is required.</p>
+							<p class="help-block error-text" ng-message="required">Address is required.</p>
 							<div ng-repeat="passwordError in passwordErrors">
 								<p class="help-block error-text" ng-show="userForm.password.$error.requirements">{{passwordError}}</p>
 							</div>
 						</div>
-					</div>
-					<div class="form-group" ng-show="!userForm.password.$error.required">
-						<label>Password Requirements</label>
-						<progressbar value="requirementsProgress" type="{{requirementsColor}}"><span style="color:white; white-space:nowrap;">{{requirementsProgress}}%</span></progressbar>
 					</div>
 					<div class="text-center form-group">
 						<button type="submit" class="btn btn-primary">Add</button>

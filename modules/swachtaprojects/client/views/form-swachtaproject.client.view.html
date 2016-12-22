@@ -1,24 +1,125 @@
 <section>
-  <div class="page-header">
-    <h1>{{vm.swachtaproject._id ? 'Edit Swachtaproject' : 'New Swachtaproject'}}</h1>
-  </div>
-  <div class="col-md-12">
-    <form name="vm.form.swachtaprojectForm" class="form-horizontal" ng-submit="vm.save(vm.form.swachtaprojectForm.$valid)" novalidate>
+	<div class="page-header">
+		<h1>{{vm.swachtaproject._id ? 'Edit Swachtaproject' : 'New Swachtaproject'}}</h1>
+	</div>
+	<div class="col-xs-6 md-inline-form" layout="column" ng-cloak class="md-inline-form">
+		<!--<form name="vm.form.swachtaprojectForm" class="form-horizontal" ng-submit="vm.save(vm.form.swachtaprojectForm.$valid)" novalidate>
       <fieldset>
         <div class="form-group" show-errors>
           <label class="control-label" for="name">Create Project</label>
-          <input name="name" type="text" ng-model="vm.swachtaproject.name" id="name" class="form-control" placeholder="Name" required>
-          <div ng-messages="vm.form.swachtaprojectForm.name.$error" role="alert">
+          <input name="projectName" type="text" ng-model="vm.swachtaproject.projectName" id="projectName" class="form-control" placeholder="Project Name" required>
+          <div ng-messages="vm.form.swachtaprojectForm.projectName.$error" role="alert">
             <p class="help-block error-text" ng-message="required">Swachtaproject name is required.</p>
+          </div>
+          <input name="projectType" type="dropdown" ng-model="vm.swachtaproject.projectType" id="projectType" class="form-control" required>
+          <div ng-messages="vm.form.swachtaprojectForm.projectType.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Swachtaproject name is required.</p>
+          </div>
+          <input name="projectLocationUrl" type="text" ng-model="vm.swachtaproject.projectLocationUrl" id="projectLocationUrl" class="form-control" placeholder="Url" required>
+          <div ng-messages="vm.form.swachtaprojectForm.projectLocationUrl.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Url is required.</p>
+          </div>
+          <input name="projectAddress" type="text" ng-model="vm.swachtaproject.projectAddress" id="projectAddress" class="form-control" placeholder="Address" required>
+          <div ng-messages="vm.form.swachtaprojectForm.projectAddress.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Address name is required.</p>
+          </div>
+          <input name="projectCost" type="text" ng-model="vm.swachtaproject.projectCost" id="projectCost" class="form-control" placeholder="Project Cost" required>
+          <div ng-messages="vm.form.swachtaprojectForm.projectCost.$error" role="alert">
+            <p class="help-block error-text" ng-message="required">Project cost is required.</p>
           </div>
         </div>
         <div class="form-group">
-          <button type="submit" class="btn btn-default">{{vm.swachtaproject._id ? 'Update' : 'Create'}}</button>
+          <button type="submit" class="btn <button></button>-default">{{vm.swachtaproject._id ? 'Update' : 'Create'}}</button>
         </div>
         <div ng-show="vm.error" class="text-danger">
           <strong ng-bind="vm.error"></strong>
         </div>
       </fieldset>
-    </form>
-  </div>
+    </form>-->
+		<md-content layout-padding>
+			<form name="vm.form.swachtaprojectform">
+				<md-input-container class="md-block">
+					<label> Project Description</label>
+					<input md-maxlength="30" required md-no-asterisk name="description" ng-model="vm.swachtaproject.description">
+					<div ng-messages="vm.form.swachtaprojectform.description.$error">
+						<div ng-message="required">This is required.</div>
+						<div ng-message="md-maxlength">The description must be less than 30 characters long.</div>
+					</div>
+				</md-input-container>
+
+				<div layout="row">
+					<md-input-container flex="50">
+						<label>Project Name</label>
+						<input required name="clientName" ng-model="vm.swachtaproject.projectName">
+						<div ng-messages="vm.form.swachtaprojectform.clientName.$error">
+							<div ng-message="required">This is required.</div>
+						</div>
+					</md-input-container>
+
+					<md-input-container flex="50">
+						<label>Project Type</label>
+						<md-select name="type" ng-model="vm.swachtaproject.projectType" required>
+							<md-option value="air">Air Pollution</md-option>
+							<md-option value="water">Water Pollution</md-option>
+							<md-option value="land">Land Pollution</md-option>
+							<md-option value="thought">Thought Pollution</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
+        <md-input-container flex="50">
+						<label>Project Location</label>
+						<input required name="projectLocationUrl" ng-model="vm.swachtaproject.projectLocationUrl">
+						<div ng-messages="vm.form.swachtaprojectform.clientName.$error">
+							<div ng-message="required">This is required.</div>
+						</div>
+					</md-input-container>
+            <md-input-container flex="50">
+						<img/>
+					</md-input-container>
+
+				<md-input-container class="md-block">
+					<label>Client Email</label>
+					<input required type="email" name="clientEmail" ng-model="project.clientEmail" minlength="10" maxlength="100" 
+            ng-pattern="/^.+@.+\..+$/"/>
+
+					<div ng-messages="projectForm.clientEmail.$error" role="alert">
+						<div ng-message-exp="['required', 'minlength', 'maxlength', 'pattern']">
+							Your email must be between 10 and 100 characters long and look like an e-mail address.
+						</div>
+					</div>
+				</md-input-container>
+
+				<md-input-container class="md-block">
+					<label>Hourly Rate (INR)</label>
+					<input required type="number" step="any" name="rate" ng-model="vm.swachtaproject.projectCost" min="800" max="4999" ng-pattern="/^1234$/"
+					/>
+
+					<div ng-messages="vm.form.swachtaprojectform.rate.$error" multiple md-auto-hide="false">
+						<div ng-message="required">
+							You've got to charge something! You can't just <b>give away</b> a Missile Defense System.
+						</div>
+
+						<div ng-message="min">
+							You should charge at least $800 an hour. This job is a big deal... if you mess up, everyone dies!
+						</div>
+
+						<div ng-message="pattern">
+							You should charge exactly $1,234.
+						</div>
+
+						<div ng-message="max">
+							{{projectForm.rate.$viewValue | currency:"$":0}} an hour? That's a little ridiculous. I doubt even Bill Clinton could afford
+							that.
+						</div>
+					</div>
+				</md-input-container>
+				<div>
+					<md-button type="submit">Submit</md-button>
+				</div>
+			</form>
+		</md-content>
+	</div>
+	<div class="col-xs-6" >
+		<map center="41,-87" zoom="3"></map>
+	</div>
 </section>

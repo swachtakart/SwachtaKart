@@ -18,6 +18,13 @@
     vm.remove = remove;
     vm.save = save;
 
+    //Maps
+  //    NgMap.getMap().then(function(map) {
+  //   console.log(map.getCenter());
+  //   console.log('markers', map.markers);
+  //   console.log('shapes', map.shapes);
+  // });
+
     // Remove existing Swachtaproject
     function remove() {
       if ($window.confirm('Are you sure you want to delete?')) {

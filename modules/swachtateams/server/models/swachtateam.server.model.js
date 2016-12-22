@@ -33,7 +33,7 @@ var SwachtateamSchema = new Schema({
 	ref: 'User'
   },
   teamMembers: {
-	 type:String
+	 type:[]
   }
 });
 

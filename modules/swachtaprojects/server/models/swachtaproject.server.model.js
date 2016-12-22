@@ -12,10 +12,14 @@ var mongoose = require('mongoose'),
 var SwachtaprojectSchema = new Schema({
   projectName: {
     type:String
-  }, 
+  },
+	 projectImageURL: {
+    type: String,
+    default: 'modules/users/client/img/profile/default.png'
+  },
   projectType: {
 	type:String,
-	enum:['Air','Water','Land']
+	enum:['Air','Water','Land','Thought']
   }, 
   projectLocationUrl: {
 	type:String

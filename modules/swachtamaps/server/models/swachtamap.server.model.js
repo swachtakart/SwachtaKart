@@ -10,20 +10,34 @@ var mongoose = require('mongoose'),
  * Swachtamap Schema
  */
 var SwachtamapSchema = new Schema({
-  name: {
+  mapName: {
     type: String,
     default: '',
     required: 'Please fill Swachtamap name',
     trim: true
   },
-  created: {
+  mapCreatedAt: {
     type: Date,
     default: Date.now
   },
-  user: {
+  createdBy: {
     type: Schema.ObjectId,
     ref: 'User'
+  },
+   mapType: {
+    type: String,
+    enum: ['Air','Water','Land','Thought']
+  }, 
+   mapLocationLat: {
+    type: Number
+  },
+   mapLocationLng: {
+    type: Number
+  },
+  mapLocationUrl:{
+    type:String
   }
+
 });
 
 mongoose.model('Swachtamap', SwachtamapSchema);
