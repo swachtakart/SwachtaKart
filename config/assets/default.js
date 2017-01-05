@@ -6,22 +6,26 @@ module.exports = {
       css: [
         'public/lib/bootstrap/dist/css/bootstrap.css',
         'public/lib/bootstrap/dist/css/bootstrap-theme.css',
-        'public/lib/angular-material/angular-material.css'
+        'public/lib/angular-material/angular-material.css',
+        'public/lib/lf-ng-md-file-input/dist/lf-ng-md-file-input.css',
       ],
       js: [
+        'public/lib/jquery/dist/jquery.min.js',
         'public/lib/angular/angular.js',
-        'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',
-       
+        'public/lib/bootstrap/dist/js/bootstrap.min.js',
+        'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js',     
         'public/lib/angular-resource/angular-resource.js',
         'public/lib/angular-aria/angular-aria.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-messages/angular-messages.js',
         'public/lib/angular-material/angular-material.js',
+        'public/lib/angular-file-upload/angular-file-upload.js',
+        'public/lib/lf-ng-md-file-input/dist/lf-ng-md-file-input.js',
         
         'public/lib/angular-ui-router/release/angular-ui-router.js',
         'public/lib/angular-ui-utils/ui-utils.js',
         
-        'public/lib/angular-file-upload/angular-file-upload.js',
+        
         'public/lib/owasp-password-strength-test/owasp-password-strength-test.js',
         'public/lib/ngmap/build/scripts/ng-map.min.js'
       ],

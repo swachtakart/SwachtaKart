@@ -2,8 +2,31 @@
   <div class="page-header">
     <h1>Swachtaprojects</h1>
   </div>
-  <div class="list-group">
-    <a ng-repeat="swachtaproject in vm.swachtaprojects"
+  <div class="list-group col-xs-6">
+     <md-card md-theme="{{ showDarkTheme ? 'dark-orange' : 'default' }}" md-theme-watch>
+        <md-card-title>
+          <md-card-title-text>
+            <span class="md-headline">Card with image</span>
+            <span class="md-subhead">Extra Large</span>
+          </md-card-title-text>
+        </md-card-title>
+        <md-card-content layout="row" layout-align="space-between">
+          <div class="md-media-xl card-media"></div>
+
+          <md-card-actions layout="column">
+            <md-button class="md-icon-button" aria-label="Favorite">
+              <md-icon md-svg-icon="img/icons/favorite.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Settings">
+              <md-icon md-svg-icon="img/icons/menu.svg"></md-icon>
+            </md-button>
+            <md-button class="md-icon-button" aria-label="Share">
+              <md-icon md-svg-icon="img/icons/share-arrow.svg"></md-icon>
+            </md-button>
+          </md-card-actions>
+        </md-card-content>
+      </md-card>
+    <!--<a ng-repeat="swachtaproject in vm.swachtaprojects"
        ui-sref="swachtaprojects.view({ swachtaprojectId: swachtaproject._id })"
        class="list-group-item">
       <small class="list-group-item-text">
@@ -14,7 +37,12 @@
         <span ng-if="!swachtaproject.user">Deleted User</span>
       </small>
       <h4 class="list-group-item-heading" ng-bind="swachtaproject.name"></h4>
-    </a>
+    </a>-->
+  </div>
+  <div class="col-xs-6">
+     <map  style="height: 450px" zoom-to-include-markers="true"
+     zoom="11" center="[40.74, -74.18]" draggable="true"> 
+        </map>
   </div>
   <div class="alert alert-warning text-center" ng-if="vm.swachtaprojects.$resolved && !vm.swachtaprojects.length">
     No Swachtaprojects yet, why don't you <a ui-sref="swachtaprojects.create">create one</a>?

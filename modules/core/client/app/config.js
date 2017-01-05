@@ -4,7 +4,11 @@
 var ApplicationConfiguration = (function () {
   // Init module configuration options
   var applicationModuleName = 'mean';
-  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 'ngMaterial','ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload','ngMap'];
+  var applicationModuleVendorDependencies = ['ngResource', 'ngAnimate', 'ngMessages', 
+  'ngMaterial','ui.router', 'ui.bootstrap', 'ui.utils', 'angularFileUpload','ngMap'
+  ,'lfNgMdFileInput'];
+
+  
 
   // Add a new vertical module
   var registerModule = function (moduleName, dependencies) {

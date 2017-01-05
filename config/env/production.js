@@ -6,6 +6,12 @@ module.exports = {
     privateKey: './config/sslcerts/key.pem',
     certificate: './config/sslcerts/cert.pem'
   },
+  app: {
+    title: 'Swachta Kart',
+    description: 'You Shop we clean.plant a tree,clean water and clean land to make society clean',
+    keywords: 'plant a tree,buy a plant,gift a plant,clean water,clean home,clean society in India',
+    googleAnalyticsTrackingID: process.env.GOOGLE_ANALYTICS_TRACKING_ID || 'UA-80058889-1'
+  },
   port: process.env.PORT || 8443,
   db: {
     uri: process.env.MONGOHQ_URL || process.env.MONGOLAB_URI || 'mongodb://' + (process.env.DB_1_PORT_27017_TCP_ADDR || 'localhost') + '/mean',

@@ -2,7 +2,7 @@
   <div class="page-header">
     <h1>Swachtamaps</h1>
   </div>
-  <div class="list-group">
+  <div class="list-group col-xs-6">
     <a ng-repeat="swachtamap in vm.swachtamaps"
        ui-sref="swachtamaps.view({ swachtamapId: swachtamap._id })"
        class="list-group-item">
@@ -15,6 +15,11 @@
       </small>
       <h4 class="list-group-item-heading" ng-bind="swachtamap.name"></h4>
     </a>
+  </div>
+  <div class="col-xs-6">
+     <map  style="height: 450px" zoom-to-include-markers="true"
+     zoom="11" center="[40.74, -74.18]" draggable="true"> 
+        </map>
   </div>
   <div class="alert alert-warning text-center" ng-if="vm.swachtamaps.$resolved && !vm.swachtamaps.length">
     No Swachtamaps yet, why don't you <a ui-sref="swachtamaps.create">create one</a>?

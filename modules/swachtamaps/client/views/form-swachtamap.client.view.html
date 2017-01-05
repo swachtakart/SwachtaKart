@@ -1,10 +1,65 @@
 <section>
-  <div class="page-header">
-    <h1>{{vm.swachtamap._id ? 'Edit Swachtamap' : 'New Swachtamap'}}</h1>
-  </div>
-  	<div class="col-xs-12" >
-		<map center="41,-87" zoom="3">
-      <marker ng-repeat="position in positions" position="{{position.lat}},{{position.lng}}"></marker>
-    </map>
+	<div class="page-header" layout="row" layout-sm="column" layout-align="left center" layout-wrap>
+		<!--<h1>{{vm.swachtamap._id ? 'Edit Swachtamap' : 'Swachta Map'}}</h1>-->
+     <md-input-container class="md-block" flex-gt-sm>
+            <label>Swachta Map Type</label>
+            <md-select ng-model="swachtamap.mapType">
+              <md-option ng-repeat="mapOption in mapOptions" value="{{mapOption.mapType}}">
+                {{mapOption.mapType}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+    <md-button class="md-raised"  data-toggle="modal" data-target="#swachtaMapModal">Add On Map</md-button>
+   
 	</div>
+	<div class="col-xs-12"  data-tap-disabled="true">  
+     <lf-ng-md-file-input lf-files='files' multiple preview> </lf-ng-md-file-input>
+     <map  style="height: 450px" zoom-to-include-markers="true"
+     zoom="11" center="[40.74, -74.18]" draggable="true">
+
+      
+        <custom-marker id="foo" draggable="true" position="10 pennsylvania ave, washington DC" on-click="closeCustomMarker()">
+          <div>
+            <img width="64" src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/55/President_Barack_Obama%2C_2012_portrait_crop.jpg/140px-President_Barack_Obama%2C_2012_portrait_crop.jpg" align="left" />
+          </div>
+        </custom-marker>
+      <!--<div class="ng-map-marker" lat="vm.markerPosition.lat()" lng="vm.markerPosition.lng()" draggable="true" 
+      event-drag="vm.onDrag($event, $ngMap)" 
+      event-dragstart="vm.onDragStart($event, $ngMap)" 
+      event-dragend="vm.onDragEnd($event, $ngMap)">
+            <div class="marker" ng-class="{dragging: $dragging}"></div>
+        </div>-->
+     
+        <!--<marker position="[42.73, -73.19]" title="drag me" draggable="true"></marker>-->
+     <!--<marker  ng-repeat="position in positions" 
+     position="{{position.lat}},{{position.lng}}" animation="Animation.DROP" draggable="true"></marker> -->
+        </map>
+		<!--<map center="41,-87" zoom="3">
+      
+    </map>-->
+	</div>
+  <div class="modal fade" id="swachtaMapModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Add Swachta Project</h4>
+      </div>
+      <div class="modal-body">
+         <md-input-container class="md-block" flex-gt-sm>
+            <label>Swachta Map Type</label>
+            <md-select ng-model="swachtamap.mapType">
+              <md-option ng-repeat="mapOption in mapOptions" value="{{mapOption.mapType}}">
+                {{mapOption.mapType}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
 </section>
